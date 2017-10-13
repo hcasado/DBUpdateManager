@@ -63,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BaseDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\BaseDialog.Designer.cs">
+      <DependentUpon>BaseDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileTreeNode.cs" />
     <Compile Include="frmFileEdit.cs">
       <SubType>Form</SubType>
@@ -75,6 +81,12 @@
     </Compile>
     <Compile Include="frmHelp.Designer.cs">
       <DependentUpon>frmHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIDE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIDE.Designer.cs">
+      <DependentUpon>frmIDE.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -96,9 +108,18 @@
     </Compile>
     <Compile Include="IncidenciaTreeNode.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Project\NewProjectDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\NewProjectDialog.Designer.cs">
+      <DependentUpon>NewProjectDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScriptTreeNode.cs" />
     <Compile Include="SortDirection.cs" />
+    <EmbeddedResource Include="Common\BaseDialog.resx">
+      <DependentUpon>BaseDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConnectionString.resx">
       <DependentUpon>frmConnectionString.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -110,12 +131,18 @@
       <DependentUpon>frmHelp.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmIDE.resx">
+      <DependentUpon>frmIDE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMensaje.resx">
       <DependentUpon>frmMensaje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project\NewProjectDialog.resx">
+      <DependentUpon>NewProjectDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -163,6 +190,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

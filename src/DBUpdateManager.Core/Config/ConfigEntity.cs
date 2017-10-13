@@ -7,17 +7,7 @@ namespace DBUpdateManager.Core.Config
 {
     public class ConfigEntity : IConfig
     {
-
-        public string CarpetaDeIncidencias
-        {
-            get;
-            set;
-        }
-
-        public string ConnectionString
-        {
-            get;
-            set;
-        }
+        public string ScriptRootFolder { get; set; }
+        public string ConnectionString { get; set; }
     }
 }

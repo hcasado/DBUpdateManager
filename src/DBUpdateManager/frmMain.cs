@@ -12,6 +12,8 @@ using System.Linq;
 
 using DBUpdateManager.Core.Issue;
 using DBUpdateManager.Core.Script;
+using DBUpdateManager.Core.Project;
+using DBUpdateManager.Core.Config;
 
 namespace DBUpdateManager
 {
@@ -34,12 +36,15 @@ namespace DBUpdateManager
         /// <summary>
         /// 
         /// </summary>
-        public frmMain()
+        public frmMain(ProjectFile project)
         {
             InitializeComponent();
             Version v = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             string version = " - v{0}.{1}.{2}";
             this.Text += string.Format(version, v.Major, v.Minor, v.Build);
+
+            ConfigManager.CurrentConfigFileFullPath = project.GetFullPath();
+
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -52,7 +57,7 @@ namespace DBUpdateManager
             var configManager = new DBUpdateManager.Core.Config.ConfigManager();
             var configEntity = configManager.ReadConfig();
             txtTargetDB.Text = configEntity.ConnectionString;
-            txtSourceFolder.Text = configEntity.CarpetaDeIncidencias;
+            txtSourceFolder.Text = configEntity.ScriptRootFolder;
 
             if (txtTargetDB.Text.Length > 0)
             {
@@ -78,7 +83,7 @@ namespace DBUpdateManager
                 var configManager = new DBUpdateManager.Core.Config.ConfigManager();
 
                 var configEntity = configManager.ReadConfig();
-                configEntity.CarpetaDeIncidencias = folder.SelectedPath;
+                configEntity.ScriptRootFolder = folder.SelectedPath;
 
                 configManager.WriteConfig(configEntity);
                 
@@ -204,7 +209,7 @@ namespace DBUpdateManager
                 txtTargetDB.Text = frm.ConnectionString;
                 var configManager = new DBUpdateManager.Core.Config.ConfigManager();
                 var configEntity = configManager.ReadConfig();
-                configEntity.CarpetaDeIncidencias = frm.ConnectionString;
+                configEntity.ScriptRootFolder = frm.ConnectionString;
 
                 LimpiarArbol(tvwTarget);
                 registroDeIncidencias.Clear();
@@ -675,6 +680,11 @@ namespace DBUpdateManager
             }
 
             ReadAndLoadData();
+        }
+
+        private void cmdSelectTargetDB_Click_1(object sender, EventArgs e)
+        {
+
         }
 
     }

@@ -7,7 +7,7 @@ namespace DBUpdateManager.Core.Config
 {
     interface IConfig
     {
-        string CarpetaDeIncidencias { get; }
+        string ScriptRootFolder { get; }
         string ConnectionString { get; }
     }
 }

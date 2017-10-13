@@ -121,6 +121,7 @@
             this.cmdSelectTargetDB.TabIndex = 5;
             this.cmdSelectTargetDB.Text = "...";
             this.cmdSelectTargetDB.UseVisualStyleBackColor = true;
+            this.cmdSelectTargetDB.Click += new System.EventHandler(this.cmdSelectTargetDB_Click_1);
             // 
             // txtTargetDB
             // 
