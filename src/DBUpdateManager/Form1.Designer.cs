@@ -52,7 +52,6 @@
             this.mnuPrincipal = new System.Windows.Forms.MenuStrip();
             this.mnOpciones = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSoloIncidenciasNoAplicadas = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuAyuda = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             this.tableBody.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -299,8 +298,7 @@
             // mnuPrincipal
             // 
             this.mnuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnOpciones,
-            this.mnuAyuda});
+            this.mnOpciones});
             this.mnuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnuPrincipal.Name = "mnuPrincipal";
             this.mnuPrincipal.Size = new System.Drawing.Size(692, 24);
@@ -322,13 +320,6 @@
             this.mnuSoloIncidenciasNoAplicadas.Size = new System.Drawing.Size(254, 22);
             this.mnuSoloIncidenciasNoAplicadas.Text = "Mostrar Solo Incidencias No Aplicadas";
             this.mnuSoloIncidenciasNoAplicadas.Click += new System.EventHandler(this.mnuSoloIncidenciasNoAplicadas_Click);
-            // 
-            // mnuAyuda
-            // 
-            this.mnuAyuda.Name = "mnuAyuda";
-            this.mnuAyuda.Size = new System.Drawing.Size(50, 20);
-            this.mnuAyuda.Text = "Ay&uda";
-            this.mnuAyuda.Click += new System.EventHandler(this.mnuAyuda_Click);
             // 
             // frmMain
             // 
@@ -372,7 +363,6 @@
         private System.Windows.Forms.MenuStrip mnuPrincipal;
         private System.Windows.Forms.ToolStripMenuItem mnOpciones;
         private System.Windows.Forms.ToolStripMenuItem mnuSoloIncidenciasNoAplicadas;
-        private System.Windows.Forms.ToolStripMenuItem mnuAyuda;
         private System.Windows.Forms.TableLayoutPanel tableBody;
         private System.Windows.Forms.TreeView tvwTarget;
         private System.Windows.Forms.Panel panel2;

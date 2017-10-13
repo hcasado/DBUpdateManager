@@ -1,14 +1,10 @@
-/***********************************************************************
- * Module:  ScriptFactory.cs
- * Author:  Administrator
- * Purpose: Definition of the Class Labs.GestorActualizacionBD.Core.ScriptFactory
- ***********************************************************************/
-
-using System;
-using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.IO;
 
-namespace Labs.GestorActualizacionBD.Framework
+namespace DBUpdateManager.Core.Script
 {
     public class ScriptFactory
     {
@@ -16,17 +12,17 @@ namespace Labs.GestorActualizacionBD.Framework
         private int _SecuenciaScriptImplementacion = 0;
         private string _NombreScriptImplementacion = string.Empty;
         private string _DireccionScriptImplementacion = string.Empty;
-        private TipoDeScript _TipoScriptImplementacion = TipoDeScript.Script;
+        private ScriptTypeEnum _TipoScriptImplementacion = ScriptTypeEnum.Script;
         private string _ScriptImplementacion = string.Empty;
 
         private int _SecuenciaScriptDesimplementacion = 0;
         private string _NombreScriptDesimplementacion = string.Empty;
         private string _DireccionScriptDesimplementacion = string.Empty;
-        private TipoDeScript _TipoScriptDesimplementacion = TipoDeScript.Script;
+        private ScriptTypeEnum _TipoScriptDesimplementacion = ScriptTypeEnum.Script;
         private string _ScriptDesimplementacion = string.Empty;
 
 
-        public Script Crear(FileInfo archivoDeImplementacion, FileInfo archivoDeDesimplementacion)
+        public ScriptEntity Crear(FileInfo archivoDeImplementacion, FileInfo archivoDeDesimplementacion)
         {
             bool scriptImplementacionOk = ParsearScriptImplementacion(archivoDeImplementacion);
             bool scriptDesimplementacionOk = ParsearScriptDesimplementacion(archivoDeDesimplementacion);
@@ -56,7 +52,7 @@ namespace Labs.GestorActualizacionBD.Framework
                 throw new ApplicationException("El nombre del script no coincide en los archivos " + archivoDeImplementacion + " y " + archivoDeDesimplementacion);
             }
 
-            Script script = new Script();
+            ScriptEntity script = new ScriptEntity();
             script.Secuencia = _SecuenciaScriptImplementacion;
             script.Nombre = _NombreScriptImplementacion;
             script.Tipo = _TipoScriptImplementacion;
@@ -89,7 +85,7 @@ namespace Labs.GestorActualizacionBD.Framework
 
             if (parseOk)
             {
-                _TipoScriptImplementacion = (TipoDeScript)Enum.Parse(typeof(TipoDeScript), tipo, true);
+                _TipoScriptImplementacion = (ScriptTypeEnum)Enum.Parse(typeof(ScriptTypeEnum), tipo, true);
                 _SecuenciaScriptImplementacion = int.Parse(secuencia);
                 _NombreScriptImplementacion = nombre;
                 _DireccionScriptImplementacion = direcion;
@@ -118,7 +114,7 @@ namespace Labs.GestorActualizacionBD.Framework
 
             if (parseOk)
             {
-                _TipoScriptDesimplementacion = (TipoDeScript)Enum.Parse(typeof(TipoDeScript), tipo, true);
+                _TipoScriptDesimplementacion = (ScriptTypeEnum)Enum.Parse(typeof(ScriptTypeEnum), tipo, true);
                 _SecuenciaScriptDesimplementacion = int.Parse(secuencia);
                 _NombreScriptDesimplementacion = nombre;
                 _DireccionScriptDesimplementacion = direcion;
@@ -201,7 +197,7 @@ namespace Labs.GestorActualizacionBD.Framework
         /// <returns></returns>
         private bool VerificarTipo(string tipo)
         {
-            string[] names = Enum.GetNames(typeof(TipoDeScript));
+            string[] names = Enum.GetNames(typeof(ScriptTypeEnum));
             bool verificado = false;
 
             for (int i = 0; i < names.Length; i++)
@@ -256,5 +252,4 @@ namespace Labs.GestorActualizacionBD.Framework
 
 
     }
-
 }

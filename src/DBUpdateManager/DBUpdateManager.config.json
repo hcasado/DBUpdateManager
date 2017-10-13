@@ -1,0 +1,4 @@
+﻿{
+"ConnectionString": "Persist Security Info=False;User ID=sa;Initial Catalog=GESTION;Data Source=MERCEDES\\SQL2008R2;Password=wqkdmnap10",
+"CarpetaDeIncidencias": "C:\\productos\\DinamoGestion\\DBUpdateManager\\SQL"
+}

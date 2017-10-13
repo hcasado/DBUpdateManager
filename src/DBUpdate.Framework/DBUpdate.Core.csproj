@@ -53,27 +53,13 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DinamoSoftware.Foundation">
-      <HintPath>..\Lib\DinamoSoftware.Foundation.dll</HintPath>
-    </Reference>
-    <Reference Include="Nini">
-      <HintPath>..\Lib\Nini.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuracion.cs" />
-    <Compile Include="GestorDeTransacciones.cs" />
-    <Compile Include="GestorDeIncidencias.cs" />
-    <Compile Include="Incidencia.cs" />
-    <Compile Include="IncidenciaFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Script.cs" />
-    <Compile Include="ScriptFactory.cs" />
-    <Compile Include="TipoDeScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

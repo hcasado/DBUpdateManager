@@ -1,26 +1,22 @@
-/***********************************************************************
- * Module:  Incidencia.cs
- * Author:  Administrator
- * Purpose: Definition of the Class Labs.GestorActualizacionBD.Core.Incidencia
- ***********************************************************************/
-
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using DBUpdateManager.Core.Script;
 
-namespace Labs.GestorActualizacionBD.Framework
+namespace DBUpdateManager.Core.Issue
 {
-    public class Incidencia
+    public class IssueEntity
     {
         public Int32 Secuencia;
         public String Nombre;
         public Int32 Nro;
-        public IDictionary<Int32, Script> Scripts = new Dictionary<Int32, Script>();
+        public IDictionary<Int32, ScriptEntity> Scripts = new Dictionary<Int32, ScriptEntity>();
         public String PathFisico;
         public Boolean Aplicada { get; set; }
 
 
-        public void Merge(Incidencia incidencia)
+        public void Merge(IssueEntity incidencia)
         {
             if (string.IsNullOrEmpty(this.PathFisico))
             {

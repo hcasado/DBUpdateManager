@@ -1,26 +1,22 @@
-/***********************************************************************
- * Module:  IncidenciaFactory.cs
- * Author:  Administrator
- * Purpose: Definition of the Class Labs.GestorActualizacionBD.Core.IncidenciaFactory
- ***********************************************************************/
-
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using DBUpdateManager.Core.Script;
 using System.IO;
 
-namespace Labs.GestorActualizacionBD.Framework
+namespace DBUpdateManager.Core.Issue
 {
-    public class IncidenciaFactory
+    public class IssueFactory
     {
         private const string kFilter = "*.sql";
-        private List<Script> _ScriptList = null;
+        private List<ScriptEntity> _ScriptList = null;
 
-        public Incidencia Crear(DirectoryInfo directorio)
+        public IssueEntity Crear(DirectoryInfo directorio)
         {
 
             _ScriptList = null;
-            _ScriptList = new List<Script>();
+            _ScriptList = new List<ScriptEntity>();
 
             string prefix;
             for (int i = 1; i <= 9999; i++)
@@ -39,27 +35,27 @@ namespace Labs.GestorActualizacionBD.Framework
             //TODO: validar que no existan mas archivos que los procesados.
 
 
-            Incidencia incidencia = new Incidencia();
+            IssueEntity incidencia = new IssueEntity();
             incidencia.Secuencia = 1;
             try
             {
                 incidencia.Nro = Convert.ToInt32(directorio.Name);
                 incidencia.PathFisico = directorio.FullName;
             }
-            catch (FormatException fe) 
+            catch (FormatException fe)
             {
                 // ignoramos el directorio que esta mal nombrado
                 return null;
 
                 //TODO: podemos poner un aviso al usuario de los directorios no procesados.
-            } 
-            
+            }
+
 
             incidencia.Nombre = directorio.Name;
 
-            foreach (Script s in _ScriptList)
+            foreach (ScriptEntity s in _ScriptList)
             {
-                s.Incidencia = incidencia;
+                s.IssueEntity = incidencia;
                 incidencia.Scripts.Add(s.Secuencia, s);
             }
 
@@ -76,7 +72,7 @@ namespace Labs.GestorActualizacionBD.Framework
         /// <param name="directorio">Nombre del directorio donde se encuentran los scripts</param>
         /// <param name="secuencia">numero de secuencia</param>
         /// <param name="files">nombre de los archivos</param>
-        private void ProcesarScripts(string directorio, string secuencia,  FileInfo[] files)
+        private void ProcesarScripts(string directorio, string secuencia, FileInfo[] files)
         {
             if (files.Length != 2)
             {
@@ -111,14 +107,14 @@ namespace Labs.GestorActualizacionBD.Framework
             {
                 string mensaje = string.Format("Dentro del directorio {0} la secuencia {1} " +
                                                 "tiene mal formado el postfijo '_down.sql' o '_up.sql', " +
-                                                "rev�se el nombre de los archivos de dicha secuancia.",
+                                                "revíse el nombre de los archivos de dicha secuancia.",
                                                 directorio, secuencia, files[0].Name, files[1].Name);
                 throw new ApplicationException(mensaje);
             }
 
-            Script script = scriptFactory.Crear(implementacion, desimplementacion);
+            ScriptEntity script = scriptFactory.Crear(implementacion, desimplementacion);
             _ScriptList.Add(script);
-            
+
         }
 
 

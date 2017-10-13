@@ -54,12 +54,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DinamoSoftware.Foundation">
-      <HintPath>..\Lib\DinamoSoftware.Foundation.dll</HintPath>
-    </Reference>
-    <Reference Include="Nini">
-      <HintPath>..\Lib\Nini.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -133,9 +127,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <Content Include="DBUpdateManager.config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -147,14 +141,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GestorIncidencias.cfg.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DBUpdate.Framework\DBUpdate.Framework.csproj">
-      <Project>{BAF2EA18-1C6B-492C-8AE1-97A8C3BFF491}</Project>
-      <Name>DBUpdate.Framework</Name>
+    <ProjectReference Include="..\DBUpdateManager.Core\DBUpdateManager.Core.csproj">
+      <Project>{7B2C7AC0-8FD7-46BB-908A-BA55DA2C30A3}</Project>
+      <Name>DBUpdateManager.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

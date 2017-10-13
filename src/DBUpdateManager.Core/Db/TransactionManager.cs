@@ -1,33 +1,29 @@
-/***********************************************************************
- * Module:  GestorDeActualizacionBD.cs
- * Author:  Administrator
- * Purpose: Definition of the Class Labs.GestorActualizacionBD.Core.GestorDeActualizacionBD
- ***********************************************************************/
-
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Data;
-using System.Data.Common;
+using System.Linq;
+using System.Text;
 using System.Data.SqlClient;
+using DBUpdateManager.Core.Config;
+using System.Data;
 
-namespace Labs.GestorActualizacionBD.Framework
+namespace DBUpdateManager.Core.Db
 {
-    public class GestorDeTransacciones
+    public class TransactionManager
     {
 
         protected SqlConnection _Cnn = null;
         protected SqlTransaction _Tnx = null;
+        protected ConfigManager _CnfMgr = null;
 
-        public GestorDeTransacciones()
+        public TransactionManager()
         {
 
         }
 
         public void BeginTransaction()
         {
-            _Cnn = new SqlConnection(Configuracion.Instancia.ConnectionString);
+            _CnfMgr = new ConfigManager();
+            _Cnn = new SqlConnection(_CnfMgr.ReadConfig().ConnectionString);
             _Cnn.Open();
 
             //IsolationLevel.ReadUncommitted allows mix DMLs and DDLs into same db script.
@@ -60,7 +56,7 @@ namespace Labs.GestorActualizacionBD.Framework
         {
             SqlCommand cmd = new SqlCommand(sql, _Cnn, _Tnx);
             cmd.CommandType = CommandType.Text;
-            cmd.ExecuteNonQuery();            
+            cmd.ExecuteNonQuery();
         }
     }
 }

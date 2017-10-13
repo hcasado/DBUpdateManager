@@ -1,20 +1,16 @@
-/***********************************************************************
- * Module:  GestorDeActualizacionBD.cs
- * Author:  Administrator
- * Purpose: Definition of the Class Labs.GestorActualizacionBD.Core.GestorDeActualizacionBD
- ***********************************************************************/
-
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
+using System.Text;
+using DBUpdateManager.Core.Db;
 using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
+using System.IO;
+using DBUpdateManager.Core.Script;
 
-namespace Labs.GestorActualizacionBD.Framework
+namespace DBUpdateManager.Core.Issue
 {
-    public class GestorDeIncidencias : GestorDeTransacciones
+    public class IssueManager : TransactionManager
     {
         private const string kExisteTablaLog = "select count(1) from dbo.sysobjects where id = object_id('__bitacora_de_actualizacion')";
 
@@ -40,18 +36,21 @@ namespace Labs.GestorActualizacionBD.Framework
                                                         "where nombre = 'BD' ";
 
 
-        public GestorDeIncidencias()
+        public IssueManager()
         {
 
         }
 
-        public List<Incidencia> LeerIncidenciasAplicadas()
+        public List<IssueEntity> LeerIncidenciasAplicadas()
         {
-            List<Incidencia> listaIncidencias = new List<Incidencia>();
-            DataSet ds = new DataSet();
+            List<IssueEntity> listaIncidencias = new List<IssueEntity>();
+            var ds = new DataSet();
             int existeTablaLog = 0;
             // carga el dataset
-            using (SqlConnection cnn = new SqlConnection(Configuracion.Instancia.ConnectionString))
+            var m = new DBUpdateManager.Core.Config.ConfigManager();
+
+            var config = new DBUpdateManager.Core.Config.ConfigManager();
+            using (SqlConnection cnn = new SqlConnection(config.ReadConfig().ConnectionString))
             {
                 cnn.Open();
 
@@ -82,12 +81,12 @@ namespace Labs.GestorActualizacionBD.Framework
                     DataTable dt = ds.Tables[0];
 
                     int nro_incidencia = 0;
-                    Incidencia incidencia = null;
-                    Script script = null;
+                    IssueEntity incidencia = null;
+                    ScriptEntity script = null;
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        script = new Script();
+                        script = new ScriptEntity();
                         script.Nombre = dr["nombre_script"].ToString();
                         if (nro_incidencia != Convert.ToInt32(dr["nro_incidencia"]))
                         {
@@ -98,7 +97,7 @@ namespace Labs.GestorActualizacionBD.Framework
                             }
 
                             // crear una nueva incidencia
-                            incidencia = new Incidencia();
+                            incidencia = new IssueEntity();
                             nro_incidencia = Convert.ToInt32(dr["nro_incidencia"]);
                             incidencia.Nro = nro_incidencia;
                             incidencia.Nombre = nro_incidencia.ToString();
@@ -107,7 +106,7 @@ namespace Labs.GestorActualizacionBD.Framework
 
                         script.Secuencia = Convert.ToInt32(dr["secuencia_script"]);
                         script.Nombre = Convert.ToString(dr["nombre_script"]);
-                        script.Incidencia = incidencia;
+                        script.IssueEntity = incidencia;
                         incidencia.Scripts.Add(script.Secuencia, script);
                     }
                     // agregar incidencia a la lista
@@ -126,17 +125,17 @@ namespace Labs.GestorActualizacionBD.Framework
             return listaIncidencias;
         }
 
-        public List<Incidencia> CrearIncidencias(DirectoryInfo directorio)
+        public List<IssueEntity> CrearIncidencias(DirectoryInfo directorio)
         {
-            List<Incidencia> incidencias = new List<Incidencia>();
+            List<IssueEntity> incidencias = new List<IssueEntity>();
 
 
-            IncidenciaFactory factory = new IncidenciaFactory();
+            var factory = new IssueFactory();
             foreach (DirectoryInfo di in directorio.GetDirectories())
             {
                 if (!di.Name.StartsWith("."))
                 {
-                    Incidencia i = factory.Crear(di);
+                    IssueEntity i = factory.Crear(di);
                     if (i != null) incidencias.Add(i);
                 }
             }
@@ -148,10 +147,10 @@ namespace Labs.GestorActualizacionBD.Framework
         /// Registrar aplicacion del script.
         /// </summary>
         /// <param name="script"></param>
-        public void RegistrarAplicacionDeScript(Script script)
+        public void RegistrarAplicacionDeScript(ScriptEntity script)
         {
             string sqlCmd = string.Format(kActualizarLogBD,
-                    script.Incidencia.Nro,
+                    script.IssueEntity.Nro,
                     script.Nombre,
                     script.Tipo.ToString().ToLower().ToLower(),
                     script.Secuencia);
@@ -169,9 +168,9 @@ namespace Labs.GestorActualizacionBD.Framework
         /// Registrar reversion del script.
         /// </summary>
         /// <param name="script"></param>
-        public void RegistrarReversionDeScript(Script script)
+        public void RegistrarReversionDeScript(ScriptEntity script)
         {
-            string sqlCmd = string.Format(kRevertirLogDB, script.Incidencia.Nro, script.Nombre);
+            string sqlCmd = string.Format(kRevertirLogDB, script.IssueEntity.Nro, script.Nombre);
 
             SqlCommand cmdLog = new SqlCommand(sqlCmd, _Cnn, _Tnx);
             cmdLog.CommandType = CommandType.Text;
@@ -186,11 +185,11 @@ namespace Labs.GestorActualizacionBD.Framework
         /// Aplica un script sql
         /// </summary>
         /// <param name="script"></param>
-        public void AplicarScript(Script script)
+        public void AplicarScript(ScriptEntity script)
         {
             List<String> sqlList = new List<string>(0);
 
-            if (script.Tipo == TipoDeScript.Script)
+            if (script.Tipo == ScriptTypeEnum.Script)
             {
                 var sqlArray = script.UpSql.Split(new string[] { "\r\nGO\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -228,12 +227,12 @@ namespace Labs.GestorActualizacionBD.Framework
         /// Revierte los cambios aplicados por un script
         /// </summary>
         /// <param name="script"></param>
-        public void RevertirScript(Script script)
+        public void RevertirScript(ScriptEntity script)
         {
 
             List<String> sqlList = new List<string>(0);
 
-            if (script.Tipo == TipoDeScript.Script)
+            if (script.Tipo == ScriptTypeEnum.Script)
             {
                 var sqlArray = script.DownSql.Split(new string[] { "\r\nGO\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 

@@ -10,7 +10,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 
-using Labs.GestorActualizacionBD.Framework;
+using DBUpdateManager.Core.Issue;
+using DBUpdateManager.Core.Script;
 
 namespace DBUpdateManager
 {
@@ -22,7 +23,7 @@ namespace DBUpdateManager
         /// <summary>
         /// Estas son las incidencias que se han recuperado del repositorio de scripts
         /// </summary>
-        private Dictionary<Int32, Incidencia> registroDeIncidencias = new Dictionary<int, Incidencia>();
+        private Dictionary<Int32, IssueEntity> registroDeIncidencias = new Dictionary<int, IssueEntity>();
 
         private string kVersionUp = "CREATE TABLE [dbo].[__versiones]([id] [uniqueidentifier] NOT NULL,	[nombre] [varchar](50) NULL, [version] [varchar](50) NULL, CONSTRAINT [PK_VERSIONES] PRIMARY KEY CLUSTERED ( [id] ASC ) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY] ) ON [PRIMARY]";
 
@@ -48,8 +49,10 @@ namespace DBUpdateManager
 
         private void ReadAndLoadData()
         {
-            txtTargetDB.Text = Configuracion.Instancia.ConnectionString;
-            txtSourceFolder.Text = Configuracion.Instancia.CarpetaDeIncidencias;
+            var configManager = new DBUpdateManager.Core.Config.ConfigManager();
+            var configEntity = configManager.ReadConfig();
+            txtTargetDB.Text = configEntity.ConnectionString;
+            txtSourceFolder.Text = configEntity.CarpetaDeIncidencias;
 
             if (txtTargetDB.Text.Length > 0)
             {
@@ -71,7 +74,14 @@ namespace DBUpdateManager
             if (folder.ShowDialog() == DialogResult.OK)
             {
                 txtSourceFolder.Text = folder.SelectedPath;
-                Configuracion.Instancia.CarpetaDeIncidencias = folder.SelectedPath;
+
+                var configManager = new DBUpdateManager.Core.Config.ConfigManager();
+
+                var configEntity = configManager.ReadConfig();
+                configEntity.CarpetaDeIncidencias = folder.SelectedPath;
+
+                configManager.WriteConfig(configEntity);
+                
 
                 LeerRepositorioDeIncidencias();
             }
@@ -83,12 +93,12 @@ namespace DBUpdateManager
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                var gestor = new GestorDeIncidencias();
+                var gestor = new IssueManager();
                 DirectoryInfo scriptDirectoryInfo = new DirectoryInfo(txtSourceFolder.Text);
 
                 if (scriptDirectoryInfo.Exists)
                 {
-                    List<Incidencia> incidencias = gestor.CrearIncidencias(scriptDirectoryInfo);
+                    List<IssueEntity> incidencias = gestor.CrearIncidencias(scriptDirectoryInfo);
                     IndexarIncidencias(incidencias);
 
                     MostrarRepositorioDeIncidencias();
@@ -115,9 +125,9 @@ namespace DBUpdateManager
 
         }
 
-        private void IndexarIncidencias(List<Incidencia> listaIncidencias)
+        private void IndexarIncidencias(List<IssueEntity> listaIncidencias)
         {
-            foreach (Incidencia incidencia in listaIncidencias)
+            foreach (IssueEntity incidencia in listaIncidencias)
             {
                 if (!registroDeIncidencias.ContainsKey(incidencia.Nro))
                 {
@@ -140,19 +150,19 @@ namespace DBUpdateManager
             vistaArbol.Nodes.Clear();
         }
 
-        private void RellenarArbol(TreeView vistaArbol, IEnumerable<Incidencia> incidencias, bool mostrarIncidenciasAplicadas, bool mostrarIncidenciasNoAplicadas)
+        private void RellenarArbol(TreeView vistaArbol, IEnumerable<IssueEntity> incidencias, bool mostrarIncidenciasAplicadas, bool mostrarIncidenciasNoAplicadas)
         {
             LimpiarArbol(vistaArbol);
 
             var incidenciasOrdenadas = from i in incidencias orderby i.Nro descending select i;
 
-            foreach (Incidencia i in incidenciasOrdenadas)
+            foreach (IssueEntity i in incidenciasOrdenadas)
             {
 
                 if ((mostrarIncidenciasAplicadas && i.Aplicada) || (mostrarIncidenciasNoAplicadas && !i.Aplicada))
                 {
                     IncidenciaTreeNode nodoIncidencia = new IncidenciaTreeNode(i.Nombre);
-                    foreach (Script s in i.Scripts.Values)
+                    foreach (ScriptEntity s in i.Scripts.Values)
                     {
                         ScriptTreeNode nodoScript = new ScriptTreeNode(s.Nombre);
 
@@ -192,7 +202,9 @@ namespace DBUpdateManager
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 txtTargetDB.Text = frm.ConnectionString;
-                Configuracion.Instancia.ConnectionString = frm.ConnectionString;
+                var configManager = new DBUpdateManager.Core.Config.ConfigManager();
+                var configEntity = configManager.ReadConfig();
+                configEntity.CarpetaDeIncidencias = frm.ConnectionString;
 
                 LimpiarArbol(tvwTarget);
                 registroDeIncidencias.Clear();
@@ -201,7 +213,7 @@ namespace DBUpdateManager
 
                 try
                 {
-                    Configuracion.Instancia.ConnectionString = frm.ConnectionString;
+                    configManager.WriteConfig(configEntity);
                 }
                 catch (Exception ex)
                 {
@@ -222,8 +234,8 @@ namespace DBUpdateManager
 
             try
             {
-                var gestor = new GestorDeIncidencias();
-                List<Incidencia> incidencias = gestor.LeerIncidenciasAplicadas();
+                var gestor = new IssueManager();
+                List<IssueEntity> incidencias = gestor.LeerIncidenciasAplicadas();
                 IndexarIncidencias(incidencias);
                 MostrarIncidenciasAplicadas();
                 cmdInicializar.Enabled = false;
@@ -243,23 +255,23 @@ namespace DBUpdateManager
         }
 
 
-        private IOrderedEnumerable<Incidencia> ObtenerIncidenciasSeleccionadas(TreeView vistaArbol, SortDirection direction)
+        private IOrderedEnumerable<IssueEntity> ObtenerIncidenciasSeleccionadas(TreeView vistaArbol, SortDirection direction)
         {
 
-            IList<Incidencia> listaIncidencias = new List<Incidencia>();
-            Incidencia incidencia = null;
+            IList<IssueEntity> listaIncidencias = new List<IssueEntity>();
+            IssueEntity incidencia = null;
 
             foreach (TreeNode n in vistaArbol.Nodes)
             {
                 if (n.Checked)
                 {
-                    incidencia = (Incidencia)n.Tag;
+                    incidencia = (IssueEntity)n.Tag;
                     listaIncidencias.Add(incidencia);
                 }
             }
 
             // siempre listar las incidencias en orden secuencial progresivo
-            IOrderedEnumerable<Incidencia> incidenciasOrdenadas = null;
+            IOrderedEnumerable<IssueEntity> incidenciasOrdenadas = null;
             if (direction == SortDirection.Ascending)
             {
                 incidenciasOrdenadas = from i in listaIncidencias orderby i.Nro ascending select i;
@@ -286,7 +298,7 @@ namespace DBUpdateManager
 
             try
             {
-                var gestor = new GestorDeIncidencias();
+                var gestor = new IssueManager();
                 string directorioActual = string.Empty;
                 string scriptActual = string.Empty;
 
@@ -295,11 +307,11 @@ namespace DBUpdateManager
                     var listaIncidencias = ObtenerIncidenciasSeleccionadas(tvwSource, SortDirection.Ascending);
                     gestor.BeginTransaction();
 
-                    foreach (Incidencia incidencia in listaIncidencias)
+                    foreach (IssueEntity incidencia in listaIncidencias)
                     {
                         directorioActual = incidencia.Nombre;
 
-                        foreach (Script script in incidencia.Scripts.Values)
+                        foreach (ScriptEntity script in incidencia.Scripts.Values)
                         {
                             scriptActual = script.Nombre;
                             gestor.AplicarScript(script);
@@ -348,10 +360,10 @@ namespace DBUpdateManager
 
             try
             {
-                var gestor = new GestorDeIncidencias();
+                var gestor = new IssueManager();
                 string directorioActual = string.Empty;
                 string scriptActual = string.Empty;
-                IEnumerable<Incidencia> listaIncidencias = new List<Incidencia>();
+                IEnumerable<IssueEntity> listaIncidencias = new List<IssueEntity>();
                 try
                 {
                     gestor.BeginTransaction();
@@ -411,13 +423,13 @@ namespace DBUpdateManager
                 return;
             }
 
-            if (!e.Node.Tag.GetType().Equals(typeof(Incidencia)))
+            if (!e.Node.Tag.GetType().Equals(typeof(IssueEntity)))
             {
                 return;
             }
 
-            int nroIncidencia = ((Incidencia)e.Node.Tag).Nro;
-            Incidencia incidencia = null;
+            int nroIncidencia = ((IssueEntity)e.Node.Tag).Nro;
+            IssueEntity incidencia = null;
             if (registroDeIncidencias.TryGetValue(nroIncidencia, out incidencia))
             {
                 e.Node.Tag = incidencia;
@@ -460,13 +472,13 @@ namespace DBUpdateManager
                 return;
             }
 
-            if (!e.Node.Tag.GetType().Equals(typeof(Incidencia)))
+            if (!e.Node.Tag.GetType().Equals(typeof(IssueEntity)))
             {
                 return;
             }
 
-            int nroIncidencia = ((Incidencia)e.Node.Tag).Nro;
-            Incidencia incidencia = null;
+            int nroIncidencia = ((IssueEntity)e.Node.Tag).Nro;
+            IssueEntity incidencia = null;
             if (registroDeIncidencias.TryGetValue(nroIncidencia, out incidencia))
             {
                 if (incidencia.Aplicada)
@@ -478,13 +490,13 @@ namespace DBUpdateManager
             }
         }
 
-        private void DeseleccionarNodo(TreeView vistaArbol, Incidencia incidencia)
+        private void DeseleccionarNodo(TreeView vistaArbol, IssueEntity incidencia)
         {
             foreach (TreeNode nodo in vistaArbol.Nodes)
             {
-                if (nodo.Tag.GetType().Equals(typeof(Incidencia)))
+                if (nodo.Tag.GetType().Equals(typeof(IssueEntity)))
                 {
-                    if (((Incidencia)nodo.Tag).Nro == incidencia.Nro)
+                    if (((IssueEntity)nodo.Tag).Nro == incidencia.Nro)
                     {
                         nodo.Checked = false;
                         break;
@@ -503,7 +515,7 @@ namespace DBUpdateManager
                 {
                     try
                     {
-                        string path = ((Labs.GestorActualizacionBD.Framework.Incidencia)((IncidenciaTreeNode)selectedNode).Tag).PathFisico;
+                        string path = ((IssueEntity)((IncidenciaTreeNode)selectedNode).Tag).PathFisico;
                         Process p = new Process();
                         p.StartInfo = new ProcessStartInfo("explorer.exe", path);
                         p.Start();
@@ -517,8 +529,8 @@ namespace DBUpdateManager
                 {
                     try
                     {
-                        Script script = (Labs.GestorActualizacionBD.Framework.Script)((ScriptTreeNode)selectedNode.Parent).Tag;
-                        string path = script.Incidencia.PathFisico;
+                        ScriptEntity script = (ScriptEntity)((ScriptTreeNode)selectedNode.Parent).Tag;
+                        string path = script.IssueEntity.PathFisico;
                         string filename = selectedNode.Text;
                         string fullFileName = path + @"\\" + filename;
                         new frmFileEdit(fullFileName).ShowDialog();
@@ -550,7 +562,7 @@ namespace DBUpdateManager
 
                 try
                 {
-                    var gestor = new GestorDeIncidencias();
+                    var gestor = new IssueManager();
                     string directorioActual = string.Empty;
                     string scriptActual = string.Empty;
 
@@ -559,11 +571,11 @@ namespace DBUpdateManager
                         var listaIncidencias = ObtenerIncidenciasSeleccionadas(tvwSource, SortDirection.Ascending);
                         gestor.BeginTransaction();
 
-                        foreach (Incidencia incidencia in listaIncidencias)
+                        foreach (IssueEntity incidencia in listaIncidencias)
                         {
                             directorioActual = incidencia.Nombre;
 
-                            foreach (Script script in incidencia.Scripts.Values)
+                            foreach (ScriptEntity script in incidencia.Scripts.Values)
                             {
                                 scriptActual = script.Nombre;
                                 gestor.RegistrarAplicacionDeScript(script);
@@ -633,7 +645,7 @@ namespace DBUpdateManager
 
         private void cmdTipos_Click(object sender, EventArgs e)
         {
-            string[] names = Enum.GetNames(typeof(TipoDeScript));
+            string[] names = Enum.GetNames(typeof(ScriptTypeEnum));
             var message = string.Join(" | ", names);
             MessageBox.Show(message);
 
@@ -642,7 +654,7 @@ namespace DBUpdateManager
 
         private void cmdInicializar_Click(object sender, EventArgs e)
         {
-            var gestor = new GestorDeTransacciones();
+            var gestor = new IssueManager();
 
             try
             {

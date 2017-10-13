@@ -1,16 +1,14 @@
-/***********************************************************************
- * Module:  Script.cs
- * Author:  Administrator
- * Purpose: Definition of the Class Labs.GestorActualizacionBD.Core.Script
- ***********************************************************************/
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using DBUpdateManager.Core.Issue;
 
-using System;
-
-namespace Labs.GestorActualizacionBD.Framework
+namespace DBUpdateManager.Core.Script
 {
-    public class Script
+    public class ScriptEntity
     {
-        public Incidencia Incidencia;
+        public IssueEntity IssueEntity;
         public Int32 Secuencia;
         public String Nombre;
         public String UpFile;
@@ -18,10 +16,10 @@ namespace Labs.GestorActualizacionBD.Framework
         public String DownFile;
         public String DownSql;
 
-        public TipoDeScript Tipo;
+        public ScriptTypeEnum Tipo;
 
 
-        public void Merge(Script script)
+        public void Merge(ScriptEntity script)
         {
             if (string.IsNullOrEmpty(this.UpSql))
             {
@@ -43,7 +41,7 @@ namespace Labs.GestorActualizacionBD.Framework
             {
                 this.DownFile = script.DownFile;
             }
-            
+
 
         }
     }
