@@ -32,6 +32,8 @@
             this.mnFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnNew = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNewProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOpenProject = new System.Windows.Forms.ToolStripMenuItem();
             this.statusIDE = new System.Windows.Forms.StatusStrip();
             this.menuIDE.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +51,8 @@
             // mnFile
             // 
             this.mnFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnNew});
+            this.mnNew,
+            this.mnuOpen});
             this.mnFile.Name = "mnFile";
             this.mnFile.Size = new System.Drawing.Size(35, 20);
             this.mnFile.Text = "&File";
@@ -70,6 +73,23 @@
             this.mnuNewProject.Size = new System.Drawing.Size(177, 22);
             this.mnuNewProject.Text = "&Project";
             this.mnuNewProject.Click += new System.EventHandler(this.mnuNewProject_Click);
+            // 
+            // mnuOpen
+            // 
+            this.mnuOpen.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuOpenProject});
+            this.mnuOpen.Name = "mnuOpen";
+            this.mnuOpen.Size = new System.Drawing.Size(152, 22);
+            this.mnuOpen.Text = "&Open";
+            // 
+            // mnuOpenProject
+            // 
+            this.mnuOpenProject.Name = "mnuOpenProject";
+            this.mnuOpenProject.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.O)));
+            this.mnuOpenProject.Size = new System.Drawing.Size(178, 22);
+            this.mnuOpenProject.Text = "&Project";
+            this.mnuOpenProject.Click += new System.EventHandler(this.mnuOpenProject_Click);
             // 
             // statusIDE
             // 
@@ -103,5 +123,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnNew;
         private System.Windows.Forms.StatusStrip statusIDE;
         private System.Windows.Forms.ToolStripMenuItem mnuNewProject;
+        private System.Windows.Forms.ToolStripMenuItem mnuOpen;
+        private System.Windows.Forms.ToolStripMenuItem mnuOpenProject;
     }
 }

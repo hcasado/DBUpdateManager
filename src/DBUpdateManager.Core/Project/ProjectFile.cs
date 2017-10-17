@@ -8,7 +8,7 @@ namespace DBUpdateManager.Core.Project
 {
     public class ProjectFile
     {
-        private const string kFileExtension = "djp";
+        public static string kFileExtension = "dpj";
 
         public string Name { get; set; }
         public string Location { get; set; }

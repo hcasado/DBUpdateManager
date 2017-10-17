@@ -28,6 +28,34 @@ namespace DBUpdateManager
                 pm.Save(project);
 
                 var frmMain = new frmMain(project);
+                frmMain.MdiParent = this;
+                frmMain.Show();
+            }
+        }
+
+        private void mnuOpenProject_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = @"C:\";
+            openFileDialog1.Title = "Browse Project Files";
+
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.CheckPathExists = true;
+
+            openFileDialog1.DefaultExt = "dpj";
+            openFileDialog1.Filter = "Project files (*." + ProjectFile.kFileExtension + ")|*." + ProjectFile.kFileExtension;
+            openFileDialog1.FilterIndex = 0;
+            openFileDialog1.RestoreDirectory = true;
+
+            openFileDialog1.ReadOnlyChecked = true;
+            openFileDialog1.ShowReadOnly = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                var project = new ProjectManager().Load(openFileDialog1.FileName);
+                var frmMain = new frmMain(project);
+                frmMain.MdiParent = this;
                 frmMain.Show();
             }
         }
