@@ -52,6 +52,7 @@
             this.mnuPrincipal = new System.Windows.Forms.MenuStrip();
             this.mnOpciones = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSoloIncidenciasNoAplicadas = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkSeleccionarAplicadosTodosNinguno = new System.Windows.Forms.CheckBox();
             this.pnlMain.SuspendLayout();
             this.tableBody.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -67,7 +68,7 @@
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 24);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(692, 527);
+            this.pnlMain.Size = new System.Drawing.Size(792, 527);
             this.pnlMain.TabIndex = 1;
             // 
             // tableBody
@@ -88,49 +89,50 @@
             this.tableBody.RowCount = 2;
             this.tableBody.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
             this.tableBody.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableBody.Size = new System.Drawing.Size(692, 527);
+            this.tableBody.Size = new System.Drawing.Size(792, 527);
             this.tableBody.TabIndex = 5;
             // 
             // tvwTarget
             // 
             this.tvwTarget.CheckBoxes = true;
             this.tvwTarget.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvwTarget.Location = new System.Drawing.Point(399, 143);
+            this.tvwTarget.Location = new System.Drawing.Point(449, 143);
             this.tvwTarget.Name = "tvwTarget";
-            this.tvwTarget.Size = new System.Drawing.Size(290, 381);
+            this.tvwTarget.Size = new System.Drawing.Size(340, 381);
             this.tvwTarget.TabIndex = 5;
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.chkSeleccionarAplicadosTodosNinguno);
             this.panel2.Controls.Add(this.cmdSelectTargetDB);
             this.panel2.Controls.Add(this.txtTargetDB);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(399, 3);
+            this.panel2.Location = new System.Drawing.Point(449, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(290, 134);
+            this.panel2.Size = new System.Drawing.Size(340, 134);
             this.panel2.TabIndex = 4;
             // 
             // cmdSelectTargetDB
             // 
             this.cmdSelectTargetDB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdSelectTargetDB.Location = new System.Drawing.Point(242, 26);
+            this.cmdSelectTargetDB.Location = new System.Drawing.Point(292, 26);
             this.cmdSelectTargetDB.Name = "cmdSelectTargetDB";
             this.cmdSelectTargetDB.Size = new System.Drawing.Size(30, 20);
             this.cmdSelectTargetDB.TabIndex = 5;
             this.cmdSelectTargetDB.Text = "...";
             this.cmdSelectTargetDB.UseVisualStyleBackColor = true;
+            this.cmdSelectTargetDB.Click += new System.EventHandler(this.cmdSelectTargetDB_Click_1);
             // 
             // txtTargetDB
             // 
             this.txtTargetDB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTargetDB.Location = new System.Drawing.Point(14, 26);
-            this.txtTargetDB.Multiline = true;
             this.txtTargetDB.Name = "txtTargetDB";
             this.txtTargetDB.ReadOnly = true;
-            this.txtTargetDB.Size = new System.Drawing.Size(221, 43);
+            this.txtTargetDB.Size = new System.Drawing.Size(271, 20);
             this.txtTargetDB.TabIndex = 4;
             // 
             // label1
@@ -149,7 +151,7 @@
             this.tvwSource.HideSelection = false;
             this.tvwSource.Location = new System.Drawing.Point(3, 143);
             this.tvwSource.Name = "tvwSource";
-            this.tvwSource.Size = new System.Drawing.Size(290, 381);
+            this.tvwSource.Size = new System.Drawing.Size(340, 381);
             this.tvwSource.TabIndex = 0;
             this.tvwSource.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvwSource_BeforeCheck);
             this.tvwSource.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvwSource_AfterCheck);
@@ -165,7 +167,7 @@
             this.pnlScriptSource.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlScriptSource.Location = new System.Drawing.Point(3, 3);
             this.pnlScriptSource.Name = "pnlScriptSource";
-            this.pnlScriptSource.Size = new System.Drawing.Size(290, 134);
+            this.pnlScriptSource.Size = new System.Drawing.Size(340, 134);
             this.pnlScriptSource.TabIndex = 2;
             // 
             // chkSeleccionarTodosNinguno
@@ -178,12 +180,13 @@
             this.chkSeleccionarTodosNinguno.Text = "Todos/Ninguno";
             this.chkSeleccionarTodosNinguno.ThreeState = true;
             this.chkSeleccionarTodosNinguno.UseVisualStyleBackColor = true;
+            this.chkSeleccionarTodosNinguno.CheckedChanged += new System.EventHandler(this.chkSeleccionarTodosNinguno_CheckedChanged);
             this.chkSeleccionarTodosNinguno.CheckStateChanged += new System.EventHandler(this.chkSeleccionarTodosNinguno_CheckStateChanged);
             // 
             // cmdSelectSourceFolder
             // 
             this.cmdSelectSourceFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdSelectSourceFolder.Location = new System.Drawing.Point(242, 26);
+            this.cmdSelectSourceFolder.Location = new System.Drawing.Point(292, 26);
             this.cmdSelectSourceFolder.Name = "cmdSelectSourceFolder";
             this.cmdSelectSourceFolder.Size = new System.Drawing.Size(30, 20);
             this.cmdSelectSourceFolder.TabIndex = 2;
@@ -198,7 +201,7 @@
             this.txtSourceFolder.Location = new System.Drawing.Point(15, 26);
             this.txtSourceFolder.Name = "txtSourceFolder";
             this.txtSourceFolder.ReadOnly = true;
-            this.txtSourceFolder.Size = new System.Drawing.Size(221, 20);
+            this.txtSourceFolder.Size = new System.Drawing.Size(271, 20);
             this.txtSourceFolder.TabIndex = 1;
             // 
             // lblScriptSource
@@ -216,7 +219,7 @@
             this.flowLayoutPanel1.Controls.Add(this.cmdDeploy);
             this.flowLayoutPanel1.Controls.Add(this.cmdRevert);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(299, 143);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(349, 143);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(94, 381);
             this.flowLayoutPanel1.TabIndex = 6;
@@ -260,7 +263,7 @@
             this.flowLayoutPanel2.Controls.Add(this.cmdInicializar);
             this.flowLayoutPanel2.Controls.Add(this.cmdTipos);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(299, 3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(349, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(94, 134);
             this.flowLayoutPanel2.TabIndex = 7;
@@ -291,7 +294,7 @@
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 551);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(692, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(792, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "StatusStrip";
             // 
@@ -301,7 +304,7 @@
             this.mnOpciones});
             this.mnuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnuPrincipal.Name = "mnuPrincipal";
-            this.mnuPrincipal.Size = new System.Drawing.Size(692, 24);
+            this.mnuPrincipal.Size = new System.Drawing.Size(792, 24);
             this.mnuPrincipal.TabIndex = 4;
             this.mnuPrincipal.Text = "Menu Principal";
             // 
@@ -321,11 +324,24 @@
             this.mnuSoloIncidenciasNoAplicadas.Text = "Mostrar Solo Incidencias No Aplicadas";
             this.mnuSoloIncidenciasNoAplicadas.Click += new System.EventHandler(this.mnuSoloIncidenciasNoAplicadas_Click);
             // 
+            // chkSeleccionarAplicadosTodosNinguno
+            // 
+            this.chkSeleccionarAplicadosTodosNinguno.AutoSize = true;
+            this.chkSeleccionarAplicadosTodosNinguno.Location = new System.Drawing.Point(14, 52);
+            this.chkSeleccionarAplicadosTodosNinguno.Name = "chkSeleccionarAplicadosTodosNinguno";
+            this.chkSeleccionarAplicadosTodosNinguno.Size = new System.Drawing.Size(101, 17);
+            this.chkSeleccionarAplicadosTodosNinguno.TabIndex = 6;
+            this.chkSeleccionarAplicadosTodosNinguno.Text = "Todos/Ninguno";
+            this.chkSeleccionarAplicadosTodosNinguno.ThreeState = true;
+            this.chkSeleccionarAplicadosTodosNinguno.UseVisualStyleBackColor = true;
+            this.chkSeleccionarAplicadosTodosNinguno.CheckedChanged += new System.EventHandler(this.chkSeleccionarAplicadosTodosNinguno_CheckedChanged);
+            this.chkSeleccionarAplicadosTodosNinguno.CheckStateChanged += new System.EventHandler(this.chkSeleccionarAplicadosTodosNinguno_CheckStateChanged);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(692, 573);
+            this.ClientSize = new System.Drawing.Size(792, 573);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.mnuPrincipal);
@@ -374,6 +390,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button cmdTipos;
         private System.Windows.Forms.Button cmdInicializar;
+        private System.Windows.Forms.CheckBox chkSeleccionarAplicadosTodosNinguno;
 
     }
 }

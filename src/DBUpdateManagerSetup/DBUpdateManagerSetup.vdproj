@@ -15,43 +15,25 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_3E62212F44407D018E07674147C72ED9"
-        "OwnerKey" = "8:_50D9D4E92C0C4A9EBEC2EF0224D1E75F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_50D9D4E92C0C4A9EBEC2EF0224D1E75F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_520F58A61FA8A3931D38052ECA0662FC"
-        "OwnerKey" = "8:_5C179A178424E9F43CE4217ABA9341A6"
+        "MsmKey" = "8:_744420DF8C0CE74FB2D1F22044BDB933"
+        "OwnerKey" = "8:_BA37A9DD2C663F07A78BDD3EE1A28DBE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_520F58A61FA8A3931D38052ECA0662FC"
-        "OwnerKey" = "8:_3E62212F44407D018E07674147C72ED9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_520F58A61FA8A3931D38052ECA0662FC"
+        "MsmKey" = "8:_744420DF8C0CE74FB2D1F22044BDB933"
         "OwnerKey" = "8:_50D9D4E92C0C4A9EBEC2EF0224D1E75F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_5C179A178424E9F43CE4217ABA9341A6"
-        "OwnerKey" = "8:_3E62212F44407D018E07674147C72ED9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5C179A178424E9F43CE4217ABA9341A6"
+        "MsmKey" = "8:_BA37A9DD2C663F07A78BDD3EE1A28DBE"
         "OwnerKey" = "8:_50D9D4E92C0C4A9EBEC2EF0224D1E75F"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -64,19 +46,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_520F58A61FA8A3931D38052ECA0662FC"
+        "OwnerKey" = "8:_BA37A9DD2C663F07A78BDD3EE1A28DBE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5C179A178424E9F43CE4217ABA9341A6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3E62212F44407D018E07674147C72ED9"
+        "OwnerKey" = "8:_744420DF8C0CE74FB2D1F22044BDB933"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -176,7 +152,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:3.5.21022 "
+                "FrameworkVersion" = "8:3.5.21022   "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=76617"
                 }
@@ -184,15 +160,20 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3E62212F44407D018E07674147C72ED9"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_744420DF8C0CE74FB2D1F22044BDB933"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DBUpdate.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_744420DF8C0CE74FB2D1F22044BDB933"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
-            "SourcePath" = "8:DBUpdate.Core.dll"
+            "SourcePath" = "8:Newtonsoft.Json.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9997ED045B5A41B98E30B21E572A02DD"
@@ -210,41 +191,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_520F58A61FA8A3931D38052ECA0662FC"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BA37A9DD2C663F07A78BDD3EE1A28DBE"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Nini, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:DBUpdateManager.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_BA37A9DD2C663F07A78BDD3EE1A28DBE"
+                    {
+                    "Name" = "8:DBUpdateManager.Core.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
-            "SourcePath" = "8:Nini.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_9997ED045B5A41B98E30B21E572A02DD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5C179A178424E9F43CE4217ABA9341A6"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DinamoSoftware.Foundation, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                }
-            "SourcePath" = "8:DinamoSoftware.Foundation.dll"
+            "SourcePath" = "8:DBUpdateManager.Core.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9997ED045B5A41B98E30B21E572A02DD"
@@ -319,7 +279,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DBUpdateManager"
         "ProductCode" = "8:{D24DB36D-3BD3-45B8-AE67-A5AEB06094D6}"
-        "PackageCode" = "8:{A0DC5447-5393-4C5F-B351-9C2089CE9789}"
+        "PackageCode" = "8:{6BCF3081-9C57-4A71-B7AC-AD0FC93959B5}"
         "UpgradeCode" = "8:{54C734A5-AA2F-4642-978D-CF39C2648618}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

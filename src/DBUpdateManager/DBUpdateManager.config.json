@@ -1,4 +1,4 @@
 ﻿{
-"ConnectionString": "Persist Security Info=False;User ID=sa;Initial Catalog=GESTION;Data Source=MERCEDES\\SQL2008R2;Password=wqkdmnap10",
-"CarpetaDeIncidencias": "C:\\productos\\DinamoGestion\\DBUpdateManager\\SQL"
+"ConnectionString": "data source=ALVARO-PC;initial catalog=GESTION_OVANDO;persist security info=True;user id=sa;password=47qm7bcr",
+"CarpetaDeIncidencias": "C:\\Users\\HERNAN\\develop\\dinamo-gestion\\v15\\Database\\Scripts"
 }

@@ -677,5 +677,43 @@ namespace DBUpdateManager
             ReadAndLoadData();
         }
 
+        private void cmdSelectTargetDB_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show(this.txtTargetDB.Text);
+        }
+
+        private void chkSeleccionarAplicadosTodosNinguno_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkSeleccionarTodosNinguno_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkSeleccionarAplicadosTodosNinguno_CheckStateChanged(object sender, EventArgs e)
+        {
+            switch (chkSeleccionarAplicadosTodosNinguno.CheckState)
+            {
+                case CheckState.Checked:
+                    foreach (TreeNode nodo in tvwTarget.Nodes)
+                    {
+                        nodo.Checked = true;
+                    }
+                    break;
+
+                case CheckState.Unchecked:
+                    break;
+
+                case CheckState.Indeterminate:
+                    foreach (TreeNode nodo in tvwTarget.Nodes)
+                    {
+                        nodo.Checked = false;
+                    }
+                    break;
+            }
+        }
+
     }
 }
