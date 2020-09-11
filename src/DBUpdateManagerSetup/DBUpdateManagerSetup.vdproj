@@ -21,38 +21,38 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_744420DF8C0CE74FB2D1F22044BDB933"
-        "OwnerKey" = "8:_BA37A9DD2C663F07A78BDD3EE1A28DBE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_744420DF8C0CE74FB2D1F22044BDB933"
+        "MsmKey" = "8:_8731B222802217CF7B8113450379AF86"
         "OwnerKey" = "8:_50D9D4E92C0C4A9EBEC2EF0224D1E75F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_BA37A9DD2C663F07A78BDD3EE1A28DBE"
-        "OwnerKey" = "8:_50D9D4E92C0C4A9EBEC2EF0224D1E75F"
+        "MsmKey" = "8:_C9C1F6F739FD00E5EBBE6FB4D76BBF96"
+        "OwnerKey" = "8:_8731B222802217CF7B8113450379AF86"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_C9C1F6F739FD00E5EBBE6FB4D76BBF96"
         "OwnerKey" = "8:_50D9D4E92C0C4A9EBEC2EF0224D1E75F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BA37A9DD2C663F07A78BDD3EE1A28DBE"
+        "OwnerKey" = "8:_50D9D4E92C0C4A9EBEC2EF0224D1E75F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_744420DF8C0CE74FB2D1F22044BDB933"
+        "OwnerKey" = "8:_8731B222802217CF7B8113450379AF86"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C9C1F6F739FD00E5EBBE6FB4D76BBF96"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -82,15 +82,10 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5.SP1"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5.2"
                     {
-                    "Name" = "8:.NET Framework 3.5 SP1"
-                    "ProductCode" = "8:Microsoft.Net.Framework.3.5.SP1"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
-                    {
-                    "Name" = "8:Windows Installer 3.1"
-                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    "Name" = "8:Microsoft .NET Framework 4.5.2 (x86 y x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5.2"
                     }
                 }
             }
@@ -152,7 +147,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:3.5.21022   "
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.5.2"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=76617"
                 }
@@ -160,20 +155,20 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_744420DF8C0CE74FB2D1F22044BDB933"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8731B222802217CF7B8113450379AF86"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:DBUpdateManager.Core, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_744420DF8C0CE74FB2D1F22044BDB933"
+                    "_8731B222802217CF7B8113450379AF86"
                     {
-                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Name" = "8:DBUpdateManager.Core.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Newtonsoft.Json.dll"
+            "SourcePath" = "8:DBUpdateManager.Core.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9997ED045B5A41B98E30B21E572A02DD"
@@ -191,20 +186,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BA37A9DD2C663F07A78BDD3EE1A28DBE"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C9C1F6F739FD00E5EBBE6FB4D76BBF96"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DBUpdateManager.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_BA37A9DD2C663F07A78BDD3EE1A28DBE"
+                    "_C9C1F6F739FD00E5EBBE6FB4D76BBF96"
                     {
-                    "Name" = "8:DBUpdateManager.Core.dll"
+                    "Name" = "8:Newtonsoft.Json.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:DBUpdateManager.Core.dll"
+            "SourcePath" = "8:Newtonsoft.Json.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9997ED045B5A41B98E30B21E572A02DD"
@@ -279,7 +274,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DBUpdateManager"
         "ProductCode" = "8:{D24DB36D-3BD3-45B8-AE67-A5AEB06094D6}"
-        "PackageCode" = "8:{6BCF3081-9C57-4A71-B7AC-AD0FC93959B5}"
+        "PackageCode" = "8:{93F5EF83-32DB-4E6E-8DBA-290E431B6FD3}"
         "UpgradeCode" = "8:{54C734A5-AA2F-4642-978D-CF39C2648618}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -426,7 +421,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_585D3D56B1C84285A2E6FC3078AE10CD"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:Progreso"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -476,7 +471,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_B1B170FB03254C35B4B39C52A7929072"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:Finalizado"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
@@ -520,7 +515,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_416B4F95D7734A68926D7E1415FD522B"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:Carpeta de instalación"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
@@ -555,7 +550,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_7FABD2F9065B4EA28E6EB26A19F784A1"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:Pantalla de bienvenida"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -603,7 +598,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_9E56DAC51E4B4A2BA43834DF0EE060CB"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:Confirmar instalación"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -634,7 +629,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_4D9889BCD78C45009F8953CDC284C2BC"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:Confirmar instalación"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
@@ -656,7 +651,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_8711DAAD3918492C83A9BD49AF34C1AF"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:Pantalla de bienvenida"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -704,7 +699,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_947AF4612FE24EF29ADA02B45C8B5EC1"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:Carpeta de instalación"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -735,7 +730,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_080ACD985A3E47D8BCB5C2B9C1419051"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:Finalizado"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
@@ -772,7 +767,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_1571084466C64706B33F82A659A3910D"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:Progreso"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
