@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using DBUpdateManager.Core.Config;
 using System.Data;
+using SharpConfig;
 
 namespace DBUpdateManager.Core.Db
 {
@@ -13,7 +14,6 @@ namespace DBUpdateManager.Core.Db
 
         protected SqlConnection _Cnn = null;
         protected SqlTransaction _Tnx = null;
-        protected ConfigManager _CnfMgr = null;
 
         public TransactionManager()
         {
@@ -22,8 +22,9 @@ namespace DBUpdateManager.Core.Db
 
         public void BeginTransaction()
         {
-            _CnfMgr = new ConfigManager();
-            _Cnn = new SqlConnection(_CnfMgr.ReadConfig().ConnectionString);
+            var config = Configuration.LoadFromFile(AppSetting.ConfigFileName);
+            var database = config[AppSetting.ConfigSectionDatabase].ToObject<DatabaseConfigSection>();
+            _Cnn = new SqlConnection(database.GetConnectionString());
             _Cnn.Open();
 
             //IsolationLevel.ReadUncommitted allows mix DMLs and DDLs into same db script.

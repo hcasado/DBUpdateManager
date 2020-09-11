@@ -32,6 +32,7 @@
             this.tableBody = new System.Windows.Forms.TableLayoutPanel();
             this.tvwTarget = new System.Windows.Forms.TreeView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.chkSeleccionarAplicadosTodosNinguno = new System.Windows.Forms.CheckBox();
             this.cmdSelectTargetDB = new System.Windows.Forms.Button();
             this.txtTargetDB = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@
             this.mnuPrincipal = new System.Windows.Forms.MenuStrip();
             this.mnOpciones = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSoloIncidenciasNoAplicadas = new System.Windows.Forms.ToolStripMenuItem();
-            this.chkSeleccionarAplicadosTodosNinguno = new System.Windows.Forms.CheckBox();
             this.pnlMain.SuspendLayout();
             this.tableBody.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -66,16 +66,17 @@
             // 
             this.pnlMain.Controls.Add(this.tableBody);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 24);
+            this.pnlMain.Location = new System.Drawing.Point(0, 30);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(792, 527);
+            this.pnlMain.Size = new System.Drawing.Size(1056, 653);
             this.pnlMain.TabIndex = 1;
             // 
             // tableBody
             // 
             this.tableBody.ColumnCount = 3;
             this.tableBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
             this.tableBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableBody.Controls.Add(this.tvwTarget, 2, 1);
             this.tableBody.Controls.Add(this.panel2, 2, 0);
@@ -85,20 +86,22 @@
             this.tableBody.Controls.Add(this.flowLayoutPanel2, 1, 0);
             this.tableBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableBody.Location = new System.Drawing.Point(0, 0);
+            this.tableBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableBody.Name = "tableBody";
             this.tableBody.RowCount = 2;
-            this.tableBody.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableBody.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 172F));
             this.tableBody.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableBody.Size = new System.Drawing.Size(792, 527);
+            this.tableBody.Size = new System.Drawing.Size(1056, 653);
             this.tableBody.TabIndex = 5;
             // 
             // tvwTarget
             // 
             this.tvwTarget.CheckBoxes = true;
             this.tvwTarget.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvwTarget.Location = new System.Drawing.Point(449, 143);
+            this.tvwTarget.Location = new System.Drawing.Point(598, 176);
+            this.tvwTarget.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tvwTarget.Name = "tvwTarget";
-            this.tvwTarget.Size = new System.Drawing.Size(340, 381);
+            this.tvwTarget.Size = new System.Drawing.Size(454, 473);
             this.tvwTarget.TabIndex = 5;
             // 
             // panel2
@@ -109,17 +112,33 @@
             this.panel2.Controls.Add(this.txtTargetDB);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(449, 3);
+            this.panel2.Location = new System.Drawing.Point(598, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(340, 134);
+            this.panel2.Size = new System.Drawing.Size(454, 164);
             this.panel2.TabIndex = 4;
+            // 
+            // chkSeleccionarAplicadosTodosNinguno
+            // 
+            this.chkSeleccionarAplicadosTodosNinguno.AutoSize = true;
+            this.chkSeleccionarAplicadosTodosNinguno.Location = new System.Drawing.Point(19, 64);
+            this.chkSeleccionarAplicadosTodosNinguno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkSeleccionarAplicadosTodosNinguno.Name = "chkSeleccionarAplicadosTodosNinguno";
+            this.chkSeleccionarAplicadosTodosNinguno.Size = new System.Drawing.Size(127, 21);
+            this.chkSeleccionarAplicadosTodosNinguno.TabIndex = 6;
+            this.chkSeleccionarAplicadosTodosNinguno.Text = "Todos/Ninguno";
+            this.chkSeleccionarAplicadosTodosNinguno.ThreeState = true;
+            this.chkSeleccionarAplicadosTodosNinguno.UseVisualStyleBackColor = true;
+            this.chkSeleccionarAplicadosTodosNinguno.CheckedChanged += new System.EventHandler(this.chkSeleccionarAplicadosTodosNinguno_CheckedChanged);
+            this.chkSeleccionarAplicadosTodosNinguno.CheckStateChanged += new System.EventHandler(this.chkSeleccionarAplicadosTodosNinguno_CheckStateChanged);
             // 
             // cmdSelectTargetDB
             // 
             this.cmdSelectTargetDB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdSelectTargetDB.Location = new System.Drawing.Point(292, 26);
+            this.cmdSelectTargetDB.Location = new System.Drawing.Point(391, 32);
+            this.cmdSelectTargetDB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdSelectTargetDB.Name = "cmdSelectTargetDB";
-            this.cmdSelectTargetDB.Size = new System.Drawing.Size(30, 20);
+            this.cmdSelectTargetDB.Size = new System.Drawing.Size(40, 25);
             this.cmdSelectTargetDB.TabIndex = 5;
             this.cmdSelectTargetDB.Text = "...";
             this.cmdSelectTargetDB.UseVisualStyleBackColor = true;
@@ -129,18 +148,20 @@
             // 
             this.txtTargetDB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTargetDB.Location = new System.Drawing.Point(14, 26);
+            this.txtTargetDB.Location = new System.Drawing.Point(19, 32);
+            this.txtTargetDB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTargetDB.Name = "txtTargetDB";
             this.txtTargetDB.ReadOnly = true;
-            this.txtTargetDB.Size = new System.Drawing.Size(271, 20);
+            this.txtTargetDB.Size = new System.Drawing.Size(362, 22);
             this.txtTargetDB.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(16, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.Size = new System.Drawing.Size(79, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "DB Destino";
             // 
@@ -149,9 +170,10 @@
             this.tvwSource.CheckBoxes = true;
             this.tvwSource.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvwSource.HideSelection = false;
-            this.tvwSource.Location = new System.Drawing.Point(3, 143);
+            this.tvwSource.Location = new System.Drawing.Point(4, 176);
+            this.tvwSource.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tvwSource.Name = "tvwSource";
-            this.tvwSource.Size = new System.Drawing.Size(340, 381);
+            this.tvwSource.Size = new System.Drawing.Size(453, 473);
             this.tvwSource.TabIndex = 0;
             this.tvwSource.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvwSource_BeforeCheck);
             this.tvwSource.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvwSource_AfterCheck);
@@ -165,17 +187,19 @@
             this.pnlScriptSource.Controls.Add(this.txtSourceFolder);
             this.pnlScriptSource.Controls.Add(this.lblScriptSource);
             this.pnlScriptSource.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlScriptSource.Location = new System.Drawing.Point(3, 3);
+            this.pnlScriptSource.Location = new System.Drawing.Point(4, 4);
+            this.pnlScriptSource.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlScriptSource.Name = "pnlScriptSource";
-            this.pnlScriptSource.Size = new System.Drawing.Size(340, 134);
+            this.pnlScriptSource.Size = new System.Drawing.Size(453, 164);
             this.pnlScriptSource.TabIndex = 2;
             // 
             // chkSeleccionarTodosNinguno
             // 
             this.chkSeleccionarTodosNinguno.AutoSize = true;
-            this.chkSeleccionarTodosNinguno.Location = new System.Drawing.Point(15, 52);
+            this.chkSeleccionarTodosNinguno.Location = new System.Drawing.Point(20, 64);
+            this.chkSeleccionarTodosNinguno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkSeleccionarTodosNinguno.Name = "chkSeleccionarTodosNinguno";
-            this.chkSeleccionarTodosNinguno.Size = new System.Drawing.Size(101, 17);
+            this.chkSeleccionarTodosNinguno.Size = new System.Drawing.Size(127, 21);
             this.chkSeleccionarTodosNinguno.TabIndex = 4;
             this.chkSeleccionarTodosNinguno.Text = "Todos/Ninguno";
             this.chkSeleccionarTodosNinguno.ThreeState = true;
@@ -186,9 +210,10 @@
             // cmdSelectSourceFolder
             // 
             this.cmdSelectSourceFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdSelectSourceFolder.Location = new System.Drawing.Point(292, 26);
+            this.cmdSelectSourceFolder.Location = new System.Drawing.Point(390, 32);
+            this.cmdSelectSourceFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdSelectSourceFolder.Name = "cmdSelectSourceFolder";
-            this.cmdSelectSourceFolder.Size = new System.Drawing.Size(30, 20);
+            this.cmdSelectSourceFolder.Size = new System.Drawing.Size(40, 25);
             this.cmdSelectSourceFolder.TabIndex = 2;
             this.cmdSelectSourceFolder.Text = "...";
             this.cmdSelectSourceFolder.UseVisualStyleBackColor = true;
@@ -198,18 +223,20 @@
             // 
             this.txtSourceFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSourceFolder.Location = new System.Drawing.Point(15, 26);
+            this.txtSourceFolder.Location = new System.Drawing.Point(20, 32);
+            this.txtSourceFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSourceFolder.Name = "txtSourceFolder";
             this.txtSourceFolder.ReadOnly = true;
-            this.txtSourceFolder.Size = new System.Drawing.Size(271, 20);
+            this.txtSourceFolder.Size = new System.Drawing.Size(361, 22);
             this.txtSourceFolder.TabIndex = 1;
             // 
             // lblScriptSource
             // 
             this.lblScriptSource.AutoSize = true;
-            this.lblScriptSource.Location = new System.Drawing.Point(12, 9);
+            this.lblScriptSource.Location = new System.Drawing.Point(16, 11);
+            this.lblScriptSource.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblScriptSource.Name = "lblScriptSource";
-            this.lblScriptSource.Size = new System.Drawing.Size(78, 13);
+            this.lblScriptSource.Size = new System.Drawing.Size(105, 17);
             this.lblScriptSource.TabIndex = 0;
             this.lblScriptSource.Text = "Carpeta Origen";
             // 
@@ -219,17 +246,18 @@
             this.flowLayoutPanel1.Controls.Add(this.cmdDeploy);
             this.flowLayoutPanel1.Controls.Add(this.cmdRevert);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(349, 143);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(465, 176);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(94, 381);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(125, 473);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
             // cmdRegistrar
             // 
-            this.cmdRegistrar.Location = new System.Drawing.Point(9, 9);
-            this.cmdRegistrar.Margin = new System.Windows.Forms.Padding(9);
+            this.cmdRegistrar.Location = new System.Drawing.Point(12, 11);
+            this.cmdRegistrar.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
             this.cmdRegistrar.Name = "cmdRegistrar";
-            this.cmdRegistrar.Size = new System.Drawing.Size(75, 23);
+            this.cmdRegistrar.Size = new System.Drawing.Size(100, 28);
             this.cmdRegistrar.TabIndex = 3;
             this.cmdRegistrar.Text = "Registrar >>";
             this.cmdRegistrar.UseVisualStyleBackColor = true;
@@ -238,10 +266,10 @@
             // cmdDeploy
             // 
             this.cmdDeploy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdDeploy.Location = new System.Drawing.Point(9, 50);
-            this.cmdDeploy.Margin = new System.Windows.Forms.Padding(9);
+            this.cmdDeploy.Location = new System.Drawing.Point(12, 61);
+            this.cmdDeploy.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
             this.cmdDeploy.Name = "cmdDeploy";
-            this.cmdDeploy.Size = new System.Drawing.Size(75, 23);
+            this.cmdDeploy.Size = new System.Drawing.Size(100, 28);
             this.cmdDeploy.TabIndex = 2;
             this.cmdDeploy.Text = "Aplicar >>";
             this.cmdDeploy.UseVisualStyleBackColor = true;
@@ -249,10 +277,10 @@
             // 
             // cmdRevert
             // 
-            this.cmdRevert.Location = new System.Drawing.Point(9, 91);
-            this.cmdRevert.Margin = new System.Windows.Forms.Padding(9);
+            this.cmdRevert.Location = new System.Drawing.Point(12, 111);
+            this.cmdRevert.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
             this.cmdRevert.Name = "cmdRevert";
-            this.cmdRevert.Size = new System.Drawing.Size(75, 23);
+            this.cmdRevert.Size = new System.Drawing.Size(100, 28);
             this.cmdRevert.TabIndex = 3;
             this.cmdRevert.Text = "<< Revertir ";
             this.cmdRevert.UseVisualStyleBackColor = true;
@@ -263,17 +291,18 @@
             this.flowLayoutPanel2.Controls.Add(this.cmdInicializar);
             this.flowLayoutPanel2.Controls.Add(this.cmdTipos);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(349, 3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(465, 4);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(94, 134);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(125, 164);
             this.flowLayoutPanel2.TabIndex = 7;
             // 
             // cmdInicializar
             // 
-            this.cmdInicializar.Location = new System.Drawing.Point(9, 9);
-            this.cmdInicializar.Margin = new System.Windows.Forms.Padding(9);
+            this.cmdInicializar.Location = new System.Drawing.Point(12, 11);
+            this.cmdInicializar.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
             this.cmdInicializar.Name = "cmdInicializar";
-            this.cmdInicializar.Size = new System.Drawing.Size(75, 45);
+            this.cmdInicializar.Size = new System.Drawing.Size(100, 55);
             this.cmdInicializar.TabIndex = 1;
             this.cmdInicializar.Text = "Inicializar";
             this.cmdInicializar.UseVisualStyleBackColor = true;
@@ -281,10 +310,10 @@
             // 
             // cmdTipos
             // 
-            this.cmdTipos.Location = new System.Drawing.Point(9, 72);
-            this.cmdTipos.Margin = new System.Windows.Forms.Padding(9);
+            this.cmdTipos.Location = new System.Drawing.Point(12, 88);
+            this.cmdTipos.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
             this.cmdTipos.Name = "cmdTipos";
-            this.cmdTipos.Size = new System.Drawing.Size(75, 45);
+            this.cmdTipos.Size = new System.Drawing.Size(100, 55);
             this.cmdTipos.TabIndex = 0;
             this.cmdTipos.Text = " Tipos de scripts";
             this.cmdTipos.UseVisualStyleBackColor = true;
@@ -292,19 +321,22 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 551);
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 683);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(792, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1056, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "StatusStrip";
             // 
             // mnuPrincipal
             // 
+            this.mnuPrincipal.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mnuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnOpciones});
             this.mnuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnuPrincipal.Name = "mnuPrincipal";
-            this.mnuPrincipal.Size = new System.Drawing.Size(792, 24);
+            this.mnuPrincipal.Size = new System.Drawing.Size(1056, 30);
             this.mnuPrincipal.TabIndex = 4;
             this.mnuPrincipal.Text = "Menu Principal";
             // 
@@ -313,42 +345,33 @@
             this.mnOpciones.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSoloIncidenciasNoAplicadas});
             this.mnOpciones.Name = "mnOpciones";
-            this.mnOpciones.Size = new System.Drawing.Size(63, 20);
+            this.mnOpciones.Size = new System.Drawing.Size(85, 24);
             this.mnOpciones.Text = "&Opciones";
             // 
             // mnuSoloIncidenciasNoAplicadas
             // 
             this.mnuSoloIncidenciasNoAplicadas.CheckOnClick = true;
             this.mnuSoloIncidenciasNoAplicadas.Name = "mnuSoloIncidenciasNoAplicadas";
-            this.mnuSoloIncidenciasNoAplicadas.Size = new System.Drawing.Size(254, 22);
+            this.mnuSoloIncidenciasNoAplicadas.Size = new System.Drawing.Size(347, 26);
             this.mnuSoloIncidenciasNoAplicadas.Text = "Mostrar Solo Incidencias No Aplicadas";
             this.mnuSoloIncidenciasNoAplicadas.Click += new System.EventHandler(this.mnuSoloIncidenciasNoAplicadas_Click);
             // 
-            // chkSeleccionarAplicadosTodosNinguno
-            // 
-            this.chkSeleccionarAplicadosTodosNinguno.AutoSize = true;
-            this.chkSeleccionarAplicadosTodosNinguno.Location = new System.Drawing.Point(14, 52);
-            this.chkSeleccionarAplicadosTodosNinguno.Name = "chkSeleccionarAplicadosTodosNinguno";
-            this.chkSeleccionarAplicadosTodosNinguno.Size = new System.Drawing.Size(101, 17);
-            this.chkSeleccionarAplicadosTodosNinguno.TabIndex = 6;
-            this.chkSeleccionarAplicadosTodosNinguno.Text = "Todos/Ninguno";
-            this.chkSeleccionarAplicadosTodosNinguno.ThreeState = true;
-            this.chkSeleccionarAplicadosTodosNinguno.UseVisualStyleBackColor = true;
-            this.chkSeleccionarAplicadosTodosNinguno.CheckedChanged += new System.EventHandler(this.chkSeleccionarAplicadosTodosNinguno_CheckedChanged);
-            this.chkSeleccionarAplicadosTodosNinguno.CheckStateChanged += new System.EventHandler(this.chkSeleccionarAplicadosTodosNinguno_CheckStateChanged);
-            // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 573);
+            this.ClientSize = new System.Drawing.Size(1056, 705);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.mnuPrincipal);
             this.MainMenuStrip = this.mnuPrincipal;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmMain";
+            this.RightToLeftLayout = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DB Update Manager";
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.pnlMain.ResumeLayout(false);
             this.tableBody.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

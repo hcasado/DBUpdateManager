@@ -7,6 +7,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using DBUpdateManager.Core.Script;
+using SharpConfig;
+using DBUpdateManager.Core.Config;
 
 namespace DBUpdateManager.Core.Issue
 {
@@ -46,11 +48,11 @@ namespace DBUpdateManager.Core.Issue
             List<IssueEntity> listaIncidencias = new List<IssueEntity>();
             var ds = new DataSet();
             int existeTablaLog = 0;
+            
             // carga el dataset
-            var m = new DBUpdateManager.Core.Config.ConfigManager();
-
-            var config = new DBUpdateManager.Core.Config.ConfigManager();
-            using (SqlConnection cnn = new SqlConnection(config.ReadConfig().ConnectionString))
+            var config = Configuration.LoadFromFile(AppSetting.ConfigFileName);
+            var databaseConfigEntry = config["Database"].ToObject<DatabaseConfigSection>();
+            using (SqlConnection cnn = new SqlConnection(databaseConfigEntry.GetConnectionString()))
             {
                 cnn.Open();
 

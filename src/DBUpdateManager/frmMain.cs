@@ -12,6 +12,9 @@ using System.Linq;
 
 using DBUpdateManager.Core.Issue;
 using DBUpdateManager.Core.Script;
+using SharpConfig;
+using DBUpdateManager.Core.Config;
+using DBUpdateManager.Core;
 
 namespace DBUpdateManager
 {
@@ -44,15 +47,28 @@ namespace DBUpdateManager
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            ReadAndLoadData();
+            var config = Configuration.LoadFromFile(Core.AppSetting.ConfigFileName);
+            if (!config.Contains("Database"))
+            {
+                var frm = new frmConnectionString();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var databaseConfigEntry = (DatabaseConfigSection)frm.Tag;
+                    config.Add(Section.FromObject("Database", databaseConfigEntry));
+                    config.SaveToFile(Core.AppSetting.ConfigFileName);
+                }
+            }
+
         }
 
         private void ReadAndLoadData()
         {
-            var configManager = new DBUpdateManager.Core.Config.ConfigManager();
-            var configEntity = configManager.ReadConfig();
-            txtTargetDB.Text = configEntity.ConnectionString;
-            txtSourceFolder.Text = configEntity.CarpetaDeIncidencias;
+            var config = Configuration.LoadFromFile(AppSetting.ConfigFileName);
+            var databaseConfigEntry = config["Database"].ToObject<Core.Config.DatabaseConfigSection>();
+            var scriptsConfigSection = config[AppSetting.ConfigSectionScripts].ToObject<ScriptsConfigSection>();
+
+            txtTargetDB.Text = databaseConfigEntry.GetConnectionString();
+            txtSourceFolder.Text = scriptsConfigSection.RootFolder;
 
             if (txtTargetDB.Text.Length > 0)
             {
@@ -75,13 +91,13 @@ namespace DBUpdateManager
             {
                 txtSourceFolder.Text = folder.SelectedPath;
 
-                var configManager = new DBUpdateManager.Core.Config.ConfigManager();
+                var config = Configuration.LoadFromFile(AppSetting.ConfigFileName);
+                var scriptsConfigSection = config[AppSetting.ConfigSectionScripts].ToObject<ScriptsConfigSection>();
+                scriptsConfigSection.RootFolder = folder.SelectedPath;
 
-                var configEntity = configManager.ReadConfig();
-                configEntity.CarpetaDeIncidencias = folder.SelectedPath;
-
-                configManager.WriteConfig(configEntity);
-                
+                config.Remove(AppSetting.ConfigSectionScripts);
+                config.Add(Section.FromObject(AppSetting.ConfigSectionScripts, scriptsConfigSection));
+                config.SaveToFile(AppSetting.ConfigFileName);
 
                 LeerRepositorioDeIncidencias();
             }
@@ -201,27 +217,16 @@ namespace DBUpdateManager
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                txtTargetDB.Text = frm.ConnectionString;
-                var configManager = new DBUpdateManager.Core.Config.ConfigManager();
-                var configEntity = configManager.ReadConfig();
-                configEntity.CarpetaDeIncidencias = frm.ConnectionString;
+                var config = Configuration.LoadFromFile(AppSetting.ConfigFileName);
+                var databaseConfigEntry = (DatabaseConfigSection)frm.Tag;
+                config.Remove(AppSetting.ConfigSectionDatabase);
+                config.Add(Section.FromObject(AppSetting.ConfigSectionDatabase, databaseConfigEntry));
+                config.SaveToFile(Core.AppSetting.ConfigFileName);
 
                 LimpiarArbol(tvwTarget);
                 registroDeIncidencias.Clear();
 
                 LeerIncidenciasAplicadas();
-
-                try
-                {
-                    configManager.WriteConfig(configEntity);
-                }
-                catch (Exception ex)
-                {
-                    string mensaje =
-                        "Las incidencias aplicadas han sido cargadas, pero no se ha podido guardar la ConnectionString actual";
-
-                    MessageBox.Show(mensaje);
-                }
             }
 
 
@@ -679,7 +684,20 @@ namespace DBUpdateManager
 
         private void cmdSelectTargetDB_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show(this.txtTargetDB.Text);
+            var config = Configuration.LoadFromFile(Core.AppSetting.ConfigFileName);
+            var databaseConfigSection = config[AppSetting.ConfigSectionDatabase].ToObject<DatabaseConfigSection>();
+
+            var frm = new frmConnectionString();
+            frm.Tag = databaseConfigSection;
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                var databaseConfigSectionUpdate = (DatabaseConfigSection)frm.Tag;
+                config.Remove(AppSetting.ConfigSectionDatabase);
+                config.Add(Section.FromObject(AppSetting.ConfigSectionDatabase, databaseConfigSectionUpdate));
+                config.SaveToFile(Core.AppSetting.ConfigFileName);
+
+            }
+
         }
 
         private void chkSeleccionarAplicadosTodosNinguno_CheckedChanged(object sender, EventArgs e)
@@ -715,5 +733,10 @@ namespace DBUpdateManager
             }
         }
 
+        private void frmMain_Shown(object sender, EventArgs e)
+        {
+
+            ReadAndLoadData();
+        }
     }
 }

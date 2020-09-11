@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DBUpdateManager.Core.Config
 {
-    interface IConfig
+    public class ScriptsConfigSection
     {
-        string CarpetaDeIncidencias { get; }
-        string ConnectionString { get; }
+        public string RootFolder { get; set; }
     }
 }

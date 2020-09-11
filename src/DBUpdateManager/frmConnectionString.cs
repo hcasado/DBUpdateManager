@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBUpdateManager.Core.Config;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -84,6 +85,13 @@ namespace DBUpdateManager
             if (this.Probado)
             {
                 _ConnectionString = GetConnectionString();
+                this.Tag = new DBUpdateManager.Core.Config.DatabaseConfigSection()
+                {
+                    Host = txtServer.Text,
+                    Name = txtDB.Text,
+                    User = txtUser.Text,
+                    Password = txtPassword.Text,
+                };
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -104,6 +112,12 @@ namespace DBUpdateManager
 
         private void frmConnectionString_Load(object sender, EventArgs e)
         {
+            if (this.Tag != null)
+            {
+                var dbConfigSection = (DatabaseConfigSection)this.Tag;
+                _ConnectionString = dbConfigSection.GetConnectionString();
+            }
+
             string[] cnnParameters = _ConnectionString.Split(';');
 
             txtPassword.Text = GetValue(kPassword, cnnParameters);

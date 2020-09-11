@@ -37,6 +37,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SharpConfig, Version=3.2.9.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpConfig.3.2.9.1\lib\net45\SharpConfig.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,9 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\ConfigManager.cs" />
-    <Compile Include="Config\ConfigEntity.cs" />
-    <Compile Include="Config\IConfig.cs" />
+    <Compile Include="AppSetting.cs" />
+    <Compile Include="Config\ScriptsConfigSection.cs" />
+    <Compile Include="Config\DatabaseConfigSection.cs" />
     <Compile Include="Db\TransactionManager.cs" />
     <Compile Include="Issue\IssueEntity.cs" />
     <Compile Include="Issue\IssueFactory.cs" />
@@ -57,6 +60,9 @@
     <Compile Include="Script\ScriptEntity.cs" />
     <Compile Include="Script\ScriptFactory.cs" />
     <Compile Include="Script\ScriptTypeEnum.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
