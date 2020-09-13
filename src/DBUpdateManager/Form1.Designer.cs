@@ -66,10 +66,10 @@
             // 
             this.pnlMain.Controls.Add(this.tableBody);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 30);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlMain.Location = new System.Drawing.Point(0, 28);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1056, 653);
+            this.pnlMain.Size = new System.Drawing.Size(1056, 655);
             this.pnlMain.TabIndex = 1;
             // 
             // tableBody
@@ -86,12 +86,12 @@
             this.tableBody.Controls.Add(this.flowLayoutPanel2, 1, 0);
             this.tableBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableBody.Location = new System.Drawing.Point(0, 0);
-            this.tableBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableBody.Margin = new System.Windows.Forms.Padding(4);
             this.tableBody.Name = "tableBody";
             this.tableBody.RowCount = 2;
             this.tableBody.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 172F));
             this.tableBody.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableBody.Size = new System.Drawing.Size(1056, 653);
+            this.tableBody.Size = new System.Drawing.Size(1056, 655);
             this.tableBody.TabIndex = 5;
             // 
             // tvwTarget
@@ -99,9 +99,9 @@
             this.tvwTarget.CheckBoxes = true;
             this.tvwTarget.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvwTarget.Location = new System.Drawing.Point(598, 176);
-            this.tvwTarget.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tvwTarget.Margin = new System.Windows.Forms.Padding(4);
             this.tvwTarget.Name = "tvwTarget";
-            this.tvwTarget.Size = new System.Drawing.Size(454, 473);
+            this.tvwTarget.Size = new System.Drawing.Size(454, 475);
             this.tvwTarget.TabIndex = 5;
             // 
             // panel2
@@ -113,7 +113,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(598, 4);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(454, 164);
             this.panel2.TabIndex = 4;
@@ -122,7 +122,7 @@
             // 
             this.chkSeleccionarAplicadosTodosNinguno.AutoSize = true;
             this.chkSeleccionarAplicadosTodosNinguno.Location = new System.Drawing.Point(19, 64);
-            this.chkSeleccionarAplicadosTodosNinguno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkSeleccionarAplicadosTodosNinguno.Margin = new System.Windows.Forms.Padding(4);
             this.chkSeleccionarAplicadosTodosNinguno.Name = "chkSeleccionarAplicadosTodosNinguno";
             this.chkSeleccionarAplicadosTodosNinguno.Size = new System.Drawing.Size(127, 21);
             this.chkSeleccionarAplicadosTodosNinguno.TabIndex = 6;
@@ -136,7 +136,7 @@
             // 
             this.cmdSelectTargetDB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdSelectTargetDB.Location = new System.Drawing.Point(391, 32);
-            this.cmdSelectTargetDB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdSelectTargetDB.Margin = new System.Windows.Forms.Padding(4);
             this.cmdSelectTargetDB.Name = "cmdSelectTargetDB";
             this.cmdSelectTargetDB.Size = new System.Drawing.Size(40, 25);
             this.cmdSelectTargetDB.TabIndex = 5;
@@ -149,7 +149,7 @@
             this.txtTargetDB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTargetDB.Location = new System.Drawing.Point(19, 32);
-            this.txtTargetDB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTargetDB.Margin = new System.Windows.Forms.Padding(4);
             this.txtTargetDB.Name = "txtTargetDB";
             this.txtTargetDB.ReadOnly = true;
             this.txtTargetDB.Size = new System.Drawing.Size(362, 22);
@@ -171,9 +171,9 @@
             this.tvwSource.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvwSource.HideSelection = false;
             this.tvwSource.Location = new System.Drawing.Point(4, 176);
-            this.tvwSource.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tvwSource.Margin = new System.Windows.Forms.Padding(4);
             this.tvwSource.Name = "tvwSource";
-            this.tvwSource.Size = new System.Drawing.Size(453, 473);
+            this.tvwSource.Size = new System.Drawing.Size(453, 475);
             this.tvwSource.TabIndex = 0;
             this.tvwSource.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvwSource_BeforeCheck);
             this.tvwSource.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvwSource_AfterCheck);
@@ -188,7 +188,7 @@
             this.pnlScriptSource.Controls.Add(this.lblScriptSource);
             this.pnlScriptSource.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlScriptSource.Location = new System.Drawing.Point(4, 4);
-            this.pnlScriptSource.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlScriptSource.Margin = new System.Windows.Forms.Padding(4);
             this.pnlScriptSource.Name = "pnlScriptSource";
             this.pnlScriptSource.Size = new System.Drawing.Size(453, 164);
             this.pnlScriptSource.TabIndex = 2;
@@ -197,7 +197,7 @@
             // 
             this.chkSeleccionarTodosNinguno.AutoSize = true;
             this.chkSeleccionarTodosNinguno.Location = new System.Drawing.Point(20, 64);
-            this.chkSeleccionarTodosNinguno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkSeleccionarTodosNinguno.Margin = new System.Windows.Forms.Padding(4);
             this.chkSeleccionarTodosNinguno.Name = "chkSeleccionarTodosNinguno";
             this.chkSeleccionarTodosNinguno.Size = new System.Drawing.Size(127, 21);
             this.chkSeleccionarTodosNinguno.TabIndex = 4;
@@ -211,7 +211,7 @@
             // 
             this.cmdSelectSourceFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdSelectSourceFolder.Location = new System.Drawing.Point(390, 32);
-            this.cmdSelectSourceFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdSelectSourceFolder.Margin = new System.Windows.Forms.Padding(4);
             this.cmdSelectSourceFolder.Name = "cmdSelectSourceFolder";
             this.cmdSelectSourceFolder.Size = new System.Drawing.Size(40, 25);
             this.cmdSelectSourceFolder.TabIndex = 2;
@@ -224,7 +224,7 @@
             this.txtSourceFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSourceFolder.Location = new System.Drawing.Point(20, 32);
-            this.txtSourceFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSourceFolder.Margin = new System.Windows.Forms.Padding(4);
             this.txtSourceFolder.Name = "txtSourceFolder";
             this.txtSourceFolder.ReadOnly = true;
             this.txtSourceFolder.Size = new System.Drawing.Size(361, 22);
@@ -247,9 +247,9 @@
             this.flowLayoutPanel1.Controls.Add(this.cmdRevert);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(465, 176);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(125, 473);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(125, 475);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
             // cmdRegistrar
@@ -261,6 +261,7 @@
             this.cmdRegistrar.TabIndex = 3;
             this.cmdRegistrar.Text = "Registrar >>";
             this.cmdRegistrar.UseVisualStyleBackColor = true;
+            this.cmdRegistrar.Visible = false;
             this.cmdRegistrar.Click += new System.EventHandler(this.cmdRegistrar_Click);
             // 
             // cmdDeploy
@@ -292,7 +293,7 @@
             this.flowLayoutPanel2.Controls.Add(this.cmdTipos);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(465, 4);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(125, 164);
             this.flowLayoutPanel2.TabIndex = 7;
@@ -336,7 +337,7 @@
             this.mnOpciones});
             this.mnuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnuPrincipal.Name = "mnuPrincipal";
-            this.mnuPrincipal.Size = new System.Drawing.Size(1056, 30);
+            this.mnuPrincipal.Size = new System.Drawing.Size(1056, 28);
             this.mnuPrincipal.TabIndex = 4;
             this.mnuPrincipal.Text = "Menu Principal";
             // 
@@ -365,7 +366,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.mnuPrincipal);
             this.MainMenuStrip = this.mnuPrincipal;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
